@@ -2,15 +2,25 @@
 const hoursHand = document.querySelector(".hand.hours");
 const minutesHand = document.querySelector('.hand.minutes');
 const secondsHand = document.querySelector('.hand.seconds');
-
-const number1 = document.getElementById("number1");
-
 const isNumerosRomanos = document.getElementById("isNumRomanos"); //Pega situação do checkbox
-//console.log(isNumerosRomanos.checked)
+const digitalHours = document.querySelector(".digitalHours");
+const digitalMinutes = document.querySelector('.digitalMinutes');
+const digitalSeconds = document.querySelector('.digitalSeconds');
+const isDigitalClock = document.getElementById('isDigitalClock');
+const isAnalogicClock = document.getElementById('isAnalogicClock');
+const analogicClock = document.querySelector(".clock");
+const digitalClock = document.querySelector(".digitalClock");
+
 
 const setRotation = (element, rotationPercentage) =>{
     element.style.setProperty("--rotation", rotationPercentage * 360);
 };
+
+const updateDisplay = (date)=>{
+    digitalSeconds.innerText = date.getSeconds().toString().padStart(2, '0'); //estudar outras formas de melhorar esse trecho
+    digitalMinutes.innerText = date.getMinutes();
+    digitalHours.innerText = date.getHours();
+}
 
 const setClock = () =>{
     const currentDate = new Date();
@@ -23,9 +33,11 @@ const setClock = () =>{
     setRotation(minutesHand, minutesPercentage);
     setRotation(hoursHand, hoursPercentage);
     changeSecondsHand(currentDate.getSeconds());
+    updateDisplay(currentDate);
     
 }
 
+//Mudar cor do ponteiro dos segundos
 changeSecondsHand = (seconds) =>{
     if(seconds%2 ==0){
         secondsHand.style.setProperty("background-color","blue");
@@ -35,9 +47,8 @@ changeSecondsHand = (seconds) =>{
     
 };
 
-const changeNumbers = (element) => {
-    console.log(element)
-    if(element){
+const changeNumbers = (isRomanos) => {
+    if(isRomanos){
         document.getElementById("number1").innerText = "I";
         number2.innerText = "II";
         number3.innerText = "II";
@@ -68,10 +79,32 @@ const changeNumbers = (element) => {
     
 };
 
+const showsAnalogicClock = (isAnalogic) => {
+    if(!isAnalogic){
+        analogicClock.style.setProperty("display", "none");//exemplo
+    }else{
+        analogicClock.style.setProperty("display", "block");//exemplo
+    }
+    
+};
+const showsDigitalClock = (isDigital) => {
+    if(!isDigital){
+        digitalClock.style.setProperty("display", "none");
+    }else{
+        digitalClock.style.setProperty("display", "flex");
+    }
+};
 
 //isNumerosRomanos.addEventListener('change',changeNumbers(isNumerosRomanos.checked)); //descobrir pq essa linha não funciona igual a forma abaixo
 isNumerosRomanos.addEventListener('change',()=>{
     changeNumbers(isNumerosRomanos.checked)
+});
+
+isAnalogicClock.addEventListener('change',()=>{
+    showsAnalogicClock(isAnalogicClock.checked);
+});
+isDigitalClock.addEventListener('change',()=>{
+    showsDigitalClock(isDigitalClock.checked);
 });
 
 //Iniciando o relógio e atualizando ele

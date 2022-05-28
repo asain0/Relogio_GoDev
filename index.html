@@ -5,21 +5,32 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <link href="//db.onlinewebfonts.com/c/84cb021d5f9af287ffff84b61beef6dc?family=clockicons" rel="stylesheet" type="text/css"/>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet">
+    
 
     <title>Relógio</title>
     <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-    <nav> <input type="checkbox" name="" id="isNumRomanos">Numeros Romanos</nav>
+    <nav> 
+        <input type="checkbox" name="" id="isNumRomanos">Numeros Romanos
+        <input type="checkbox" name="digitalClock" id="isDigitalClock" checked>Relógio Digital
+        <input type="checkbox" name="analogicClock" id="isAnalogicClock" checked>Relógio Analógico
+    </nav>
     <section class="container">
         <div class="clock">
+            
             <div class="hand seconds"></div>
             <div class="hand minutes"></div>
             <div class="hand hours"></div>
-    
+            
             <div class="number number-1" id = "number1">1</div>
             <div class="number number-2" id = "number2">2</div>
             <div class="number number-3" id = "number3">3</div>
@@ -32,6 +43,14 @@
             <div class="number number-10" id = "number10">10</div>
             <div class="number number-11" id = "number11">11</div>
             <div class="number number-12" id = "number12">12</div>
+
+            
+        </div>
+        <div class="digitalClock" >
+            <div class="digitalHours">12</div>:
+            <div class="digitalMinutes">13</div>:
+            <div class="digitalSeconds">55</div>
+            
         </div>
     </section>
     
