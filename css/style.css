@@ -1,30 +1,28 @@
 *{
+    font-family: "Poppins", sans-serif;
+
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    font-family: "Poppins", sans-serif;
 }
 
 :root{
-    --first-bg-collor: hsl(1,1,1); 
-    --second-bg-collor: #4158d0 0%; 
-    --third-bg-collor: #4158d0 0%; 
+    --first-bg-collor: #030303; 
+    --second-bg-collor: #4158d0; 
+    --third-bg-collor: #4158d0; 
     --clock-devices: black; 
     --seconds-hand: red;
+    --imagem-atraso: "..\img\avisoAtraso.png"
 }
 
 body{
     background-image: linear-gradient(
         43deg,
-        /*
-        #4158d0 0%,
-        */
-        var(--clock-devices) 0%,
-        #c450c0 46%,
-        #ffcc70 100%
+        var(--first-bg-collor) 0%,
+        var(--second-bg-collor) 36%,
+        var(--third-bg-collor) 100%
     );
-    height: 100vh;
-    
+   height: 100vh;
 }
 
 nav{
@@ -32,33 +30,37 @@ nav{
 }
 
 section{
+    height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 100vh;
 }
 
 .clock{
+    background-color: rgba(255,255,255,0.8);
+
     width: 500px;
     height: 500px;
-    background-color: rgba(255,255,255,0.8);
+    position: relative;
+
     border-radius: 50%;
     border: 2px solid var(--clock-devices);
-    position: relative;
 }
 
 .clock .number {
     --rotation: 0;
     color: var(--clock-devices);
 
-    position: absolute;
-    width: 100%;
-    height: 100%;
     text-align: center;
-    transform: rotate(var(--rotation));
     font-size: 1.8rem;
     font-weight: 500;
+
+    width: 100%;
+    height: 100%;
+    position: absolute;
     padding: 15px;
+    
+    transform: rotate(var(--rotation));
 }
 
 .clock .number.number-1{
@@ -96,88 +98,96 @@ section{
 }
 
 .clock::after{
+    background-color: var(--clock-devices);
     content: '';
-    position:absolute;
+
     width: 10px;
     height: 10px;
-    border-radius: 50%;
+    position:absolute;
     top: 50%;
     left: 50%;
     z-index: 11;
-    background-color: var(--clock-devices);
+    
+    border-radius: 50%;
+
     transform: translate(-50%, -50%);;
 }
 
-/*ponteiros*/
 .clock .hand{
-    --rotation: 0;
-
+    background-color: var(--clock-devices);
+    
     position: absolute;
     bottom: 50%;
     left: 50%;
-    background-color: var(--clock-devices);
     z-index: 10;
-    transform: translateX(-50%) rotate(calc(var(--rotation)*1deg));
-    transform-origin: bottom;
+    
     border-top-left-radius: 10px; 
     border-top-right-radius: 10px;
+    
+    transform: translateX(-50%) rotate(calc(var(--rotation)*1deg));
+    transform-origin: bottom;
+    --rotation: 0;
 }
 
 .clock .hand.seconds{
+    background-color: var(--seconds-hand);
+
     width: 3px;
     height: 40%;
-    background-color: var(--seconds-hand);
+    z-index: 25;
 }
 
 .clock .hand.minutes{
+    background-color: var(--clock-devices);
+
     width: 7px;
     height: 35%;
-    background-color: var(--clock-devices);
 }
 
 .clock .hand.hours{
+    background-color: var(--clock-devices);
+
     width: 10px;
     height: 25%;
-    background-color: var(--clock-devices);
 }
 
 .digitalClock {
-    border: 4px solid rgba(245, 245, 245, 0);
-    border-radius: 5px;
-    background-color: rgba(205, 202, 202, 0.185);
-
-    font-family: 'Orbitron', sans-serif;
-
+    background-color: rgba(205, 202, 202, 0.85);
+    
     font-size: 45px;
     font-weight: 700;
     color: var(--clock-devices);
+    
     margin-bottom: 10%;
     position: absolute;
     
     display: flex;
     justify-content: space-between;
     align-items: center;
+    z-index: 50;
+
+    border: 4px solid rgba(245, 245, 245, 0);
+    border-radius: 5px;
 }
 
 .digitalClock *{
     font-family: 'clockicons', sans-serif;
-   
 }
 
 .currentDate{
-    border: 4px solid rgba(245, 245, 245, 0);
-    border-radius: 5px;
-    background-color: rgba(205, 202, 202, 0.185);
-
-    font-family: 'Orbitron', sans-serif;
-
-    font-size: 45px;
-    font-weight: 700;
+    background-color: rgba(205, 202, 202, 0.85);
     color: var(--clock-devices);
+    font-size: 25px;
+    font-weight: 700;
+    
+    z-index: 50;
     margin-top: 10%;
     position: absolute;
     
-    display: flex;
+    border: 4px solid rgba(245, 245, 245, 0);
+    border-radius: 5px;
+ 
+    display: none;
     justify-content: space-between;
     align-items: center;
 }
