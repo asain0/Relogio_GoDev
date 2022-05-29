@@ -9,7 +9,16 @@ const digitalSeconds = document.querySelector('.digitalSeconds');
 const isDigitalClock = document.getElementById('isDigitalClock');
 const isAnalogicClock = document.getElementById('isAnalogicClock');
 const analogicClock = document.querySelector(".clock");
-const digitalClock = document.querySelector(".digitalClock");
+
+const isDayVisible = document.getElementById('dayVisible');
+const isMonthVisible = document.getElementById('monthVisible');
+const isYearVisible = document.getElementById('yearVisible');
+
+const dayComponent = document.querySelector('.day');
+const monthComponent = document.querySelector('.month');
+const yearComponent = document.querySelector('.year');
+
+
 
 
 const setRotation = (element, rotationPercentage) =>{
@@ -95,6 +104,28 @@ const showsDigitalClock = (isDigital) => {
     }
 };
 
+const showDayComponent = (isDayVisible) => {
+    if(!isDayVisible){
+        dayComponent.style.setProperty("display", "none");
+    }else{
+        dayComponent.style.setProperty("display", "block");
+    }
+}
+const showMonthComponent = (isMonthVisible) => {
+    if(!isMonthVisible){
+        monthComponent.style.setProperty("display", "none");
+    }else{
+        monthComponent.style.setProperty("display", "block");
+    }
+}
+const showYearComponent = (isYearVisible) => {
+    if(!isYearVisible){
+        yearComponent.style.setProperty("display", "none");
+    }else{
+        yearComponent.style.setProperty("display", "block");
+    }
+}
+
 //isNumerosRomanos.addEventListener('change',changeNumbers(isNumerosRomanos.checked)); //descobrir pq essa linha não funciona igual a forma abaixo
 isNumerosRomanos.addEventListener('change',()=>{
     changeNumbers(isNumerosRomanos.checked)
@@ -106,6 +137,22 @@ isAnalogicClock.addEventListener('change',()=>{
 isDigitalClock.addEventListener('change',()=>{
     showsDigitalClock(isDigitalClock.checked);
 });
+
+isDayVisible.addEventListener('change',()=>{
+    showDayComponent(isDayVisible.checked);
+});
+
+isMonthVisible.addEventListener('change',()=>{
+    showMonthComponent(isMonthVisible.checked);
+});
+
+isYearVisible.addEventListener('change',()=>{
+    showYearComponent(isYearVisible.checked);
+});
+
+
+
+
 
 //Iniciando o relógio e atualizando ele
 setClock();
